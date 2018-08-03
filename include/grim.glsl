@@ -23,6 +23,7 @@ mat3 rotZ(float a) {
 mat3 scale(float s) { return mat3(s); }
 mat3 scale2(vec2 s) { return scale(s.x) * scale(s.y); }
 mat3 scale3(vec3 s) { return scale(s.x) * scale(s.y) * scale(s.z); }
+
 mat4 transpose(vec3 pos) {
   return mat4(vec4(1, 0, 0, 0), vec4(0, 1, 0, 0), vec4(0, 0, 1, 0),
               vec4(pos, 1));
@@ -110,14 +111,6 @@ vec3 coordinate_frame_color(float id) {
   int index = int(floor(id / 2));
   color[index] = 1.;
   return color;
-}
-
-mat4 projection() { return perspective(90., 1., 0.1, 1000.); }
-mat4 camera() {
-  vec3 eye = vec3(0, 0, -10);
-  vec3 look = vec3(0, 0, 0);
-  vec3 up = vec3(0, 1, 0);
-  return lookat(eye, look, up);
 }
 
 // hash functions
